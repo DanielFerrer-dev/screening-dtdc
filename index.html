@@ -273,7 +273,7 @@
     <div class="h">
         <div class="h-text">
             <h1>Sistema de Screening Analítico para la Orientación Vocacional (Matriz DTDC)</h1>
-            <p>Módulo de Diagnóstico y Procesamiento Estadístico Multidimensional en Transiciones Académicas</p>
+            <p>Módulo de Diagnóstico y Procesamiento Estadístico Multidimensional en Transiciones Académicas — Baremo AMBA (2017)</p>
         </div>
         <div class="badge-beta">Versión Beta (v0.9.5) / Uso Pedagógico</div>
     </div>
@@ -331,7 +331,7 @@
                 </div>
                 <div class="guide-box">
                     <div class="guide-item">
-                        <strong>Media (μ) en Puntaje Z:</strong> Puntuación tipificada estándar (fijada con M=0.00 y DE=1.00 en la muestra general de baremo).
+                        <strong>Media (μ) en Puntaje Z:</strong> Puntuación tipificada estándar (fijada con M=0.00 y DE=1.00 en la muestra general del baremo de AMBA, 2017).
                         <div class="guide-values">
                             • Z &lt; -0.50: Dificultad Baja.<br>
                             • -0.50 a +0.50: Dificultad Promedio/Moderada.<br>
@@ -405,7 +405,7 @@
                 </div>
             </div>
 
-            <div class="st">Evaluación de Ejes Decisionales e Indicadores Clínicos (Baremos Tipificados Z)</div>
+            <div class="st">Evaluación de Ejes Decisionales e Indicadores Clínicos (Baremos Tipificados Z — AMBA)</div>
             <div class="dg" id="md"></div>
         </div>
     </div>
@@ -413,7 +413,7 @@
     <footer class="footer-reseve">
         <div class="foot-col">
             <h3>Declaración Jurada e Integridad</h3>
-            <p><strong>Uso Ilustrativo Exclusivo:</strong> Los registros e índices procesados en este entorno web integran la base paramétrica descriptiva real del Estudio 3 de la Tesis Doctoral citada con matrices de extensión pedagógicas simuladas para la ejercitación diagnóstica.</p>
+            <p><strong>Uso Ilustrativo Exclusivo:</strong> Los registros e índices procesados en este entorno web integran la base paramétrica descriptiva real del Estudio 3 de la Tesis Doctoral citada para el Área Metropolitana de Buenos Aires (AMBA, 2017) con matrices de extensión pedagógicas simuladas para la ejercitación diagnóstica.</p>
         </div>
         <div class="foot-col">
             <h3>Resguardo Deontológico y Ético</h3>
@@ -426,7 +426,7 @@
         <div class="foot-col">
             <h3>Sustentación Teórica y Correspondencia</h3>
             <div class="apa-box">
-                Filippis, G. (2017). Dificultades en la toma de decisión de carrera y autoeficacia vocacional: un estudio integral acerca de su influencia en las estrategias de afrontamiento [Tesis doctoral, Universidad de Palermo]. Repositorio Institucional UP. https://dspace.palermo.edu/dspace/handle/10226/1884
+                Filippis, G. (2017). Dificultades en la toma de decisión de carrera y autoeficacia vocacional: un estudio integral acerca de su influencia en las estrategias de afrontamiento [Tesis doctoral, Universidad de Palermo]. Muestra de baremo: Área Metropolitana de Buenos Aires (AMBA). Repositorio Institucional UP. https://dspace.palermo.edu/dspace/handle/10226/1884
             </div>
             <p><strong>Contacto Técnico:</strong><br>
                 <a href="mailto:psi.daniel.ferrer@proton.me" style="color: var(--p); text-decoration: underline;">psi.daniel.ferrer@proton.me</a>
@@ -454,7 +454,7 @@ function gDT(cant, ed, g, ec, tn, src, base) {
 }
 
 // 1. INYECCIÓN REAL: ESTUDIO 3 DE FILIPPIS (Total N = 963 casos exactos distribuidos probabilísticamente)
-// Media Z = 0.00, Desvío Z = 1.00 en todas las dimensiones según la Tabla 9
+// Media Z = 0.00, Desvío Z = 1.00 en todas las dimensiones según la Tabla 9 (Baremo AMBA 2017)
 gDT(400, 18, 'M', 'Ba', 'M', 'Filippis',  {ind: 0.00, acd: 0.00, msm: 0.00, prc: 0.00, mot: 0.00, sd: 1.00});
 gDT(350, 17, 'V', 'Te', 'T', 'Filippis',  {ind: 0.02, acd: -0.01, msm: 0.04, prc: -0.02, mot: -0.05, sd: 0.98});
 gDT(213, 18, 'O', 'Te', 'M', 'Filippis',  {ind: -0.04, acd: 0.03, msm: -0.05, prc: 0.02, mot: 0.08, sd: 1.02});
@@ -472,8 +472,8 @@ const dm = [
     {
         k:'global', n:'Índice Decisional Global', isGlobal: true, alpha: 0.89,
         b: { d: 'Puntaje global tipificado significativamente bajo la media poblacional. El grupo manifiesta un proceso transicional consolidado con escasas fisuras operativas.', i: 'Validar y certificar las estrategias de autogestión informativa del grupo. Facilitar transiciones sin interferencia focalizada.' },
-        m: { d: 'Comportamiento normativo alineado al baremo central del Estudio 3. Se observan ambivalencias y dudas instrumentales esperables para el ciclo medio.', i: 'Implementar talleres grupales preventivos de la DOE y charlas informativas estandarizadas sobre la oferta académica.' },
-        a: { d: 'Desviación crítica superior respecto al baremo psicométrico. Confluencia de múltiples vectores de incertidumbre y bloqueos decisionales directos.', i: 'Activar protocolos de acompañamiento clínico-orientador singularizado y entrevistas institucionales profundas.' }
+        m: { d: 'Comportamiento normativo alineado al baremo central del Estudio 3 (AMBA, 2017). Se observan ambivalencias y dudas instrumentales esperables para el ciclo medio.', i: 'Implementar talleres grupales preventivos de orientación y charlas informativas estandarizadas sobre la oferta académica.' },
+        a: { d: 'Desviación crítica superior respecto al baremo psicométrico de referencia. Confluencia de múltiples vectores de incertidumbre y bloqueos decisionales directos.', i: 'Activar protocolos de acompañamiento clínico-orientador singularizado y entrevistas institucionales profundas.' }
     },
     {
         k:'ind', n:'Indecisión General', alpha: 0.84,
@@ -496,8 +496,8 @@ const dm = [
     {
         k:'acd', n:'Falta de Info. Académica-Profesional', alpha: 0.85,
         b: { d: 'Conocimiento fidedigno e integrado sobre los planes de estudio, perfiles profesionales y campos de inserción real.', i: 'Coordinar entrevistas directas con estudiantes avanzados de los trayectos universitarios elegidos.' },
-        m: { d: 'Existencia de sesgos tradicionales o vacíos informativos parciales sobre la oferta de educación superior actual.', i: 'Propiciar la asistencia dirigida a las muestras de carreras de la UNR y paneles socioprofesionales.' },
-        a: { d: 'Esquemas cognitivos marcadamente distorsionados, obsoletos o fragmentarios acerca de las carreras y su ejercicio profesional.', i: 'Proveer acceso guiado y análisis crítico de planes de estudio y matrices de competencias profesionales.' }
+        m: { d: 'Existencia de sesgos tradicionales o vacíos informativos parciales sobre la oferta de educación superior actual.', i: 'Propiciar la asistencia dirigida a las muestras de carreras y paneles socioprofesionales de nivel superior.' },
+        a: { d: 'Esquemas cognitivos marcadamente distornos, obsoletos o fragmentarios acerca de las carreras y su ejercicio profesional.', i: 'Proveer acceso guiado y análisis crítico de planes de estudio y matrices de competencias profesionales.' }
     },
     {
         k:'mot', n:'Falta de Motivación', alpha: 0.76,
@@ -646,7 +646,7 @@ function render() {
                 </div>
             </div>
             <div class="c2" style="background-color: ${cc.bg}; color: ${cc.texto}; border-color: ${cc.borde};">
-                <div class="it" style="color: inherit; opacity: 0.9; font-weight: 700;">Protocolo de Intervención (DOE):</div>
+                <div class="it" style="color: inherit; opacity: 0.9; font-weight: 700;">Protocolo de Intervención:</div>
                 <div style="line-height: 1.4; font-weight: 600;">${tx.i}</div>
             </div>
         `;
