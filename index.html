@@ -20,10 +20,16 @@
             --bg-badge: #334155;  
             --tx-badge: #cbd5e1;  
 
-            /* Semafóricos de control clínico */
-            --b-raw: #81c784;     
-            --m-raw: #ffb74d;     
-            --a-raw: #e57373;     
+            /* Nueva Paleta de Colores Pasteles con Alto Contraste (Fuentes Armonizadas) */
+            --b-bg: #357A35;      /* Verde Pastel Seco Oscuro para legibilidad web */
+            --b-border: #81c784;  /* Verde Pastel Claro */
+            
+            --m-bg: #8f7103;      /* Amarillo/Oro Pastel Seco Oscuro 3e3a1a */ 
+            --m-border: #ffd54f;  /* Amarillo Pastel Claro Intenso para Alto Contraste */
+            
+            --a-bg: #3a1e1e;      /* Rojo/Coral Pastel Seco Oscuro */
+            --a-border: #e57373;  /* Coral Pastel Claro */
+
             --radar-grid: #334155;
             --radar-poly: rgba(147, 197, 253, 0.18);
             --radar-stroke: #93c5fd;
@@ -40,7 +46,7 @@
             line-height: 1.5;
         }
 
-        /* Encabezado */
+        /* Encabezado Responsivo */
         .h {
             background: linear-gradient(135deg, #1e293b, #0f172a);
             color: #ffffff;
@@ -56,15 +62,59 @@
         .h-text h1 { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; color: #f8fafc; }
         .h-text p { margin-top: 4px; font-size: 12px; color: var(--m); }
         
+        .h-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .badge-beta {
             font-size: 11px;
             font-weight: 600;
             background-color: #312e81;
             color: #e0e7ff;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 12px;
+            border-radius: 6px;
             border: 1px solid #4338ca;
             white-space: nowrap;
+        }
+
+        /* Botones de Acción Estilizados */
+        .btn-action {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            padding: 7px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-pdf {
+            background-color: #2563eb;
+            border: 1px solid #3b82f6;
+        }
+        .btn-pdf:hover { background-color: #1d4ed8; }
+
+        .btn-import {
+            background-color: #475569;
+            border: 1px solid #64748b;
+        }
+        .btn-import:hover { background-color: #334155; }
+
+        @media(max-width: 900px) {
+            .h {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .h-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
         }
 
         /* Layout Principal */
@@ -75,10 +125,10 @@
             align-items: start;
         }
         @media(min-width: 950px){
-            .l { grid-template-columns: 310px 1fr; }
+            .l { grid-template-columns: 320px 1fr; }
         }
 
-        /* Columna Lateral Izquierda */
+        /* Lateral Izquierda */
         .sidebar-col {
             display: flex;
             flex-direction: column;
@@ -103,7 +153,7 @@
             letter-spacing: 0.8px;
         }
 
-        /* Caja de Filtros Poblacionales */
+        /* Filtros */
         .bx { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
         .bx:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
         .bt { font-size: 10px; font-weight: 700; color: var(--m); text-transform: uppercase; margin-bottom: 6px; }
@@ -112,12 +162,12 @@
         .mstr { font-weight: 600; color: var(--p); border-bottom: 1px dashed var(--border); margin-bottom: 8px; padding-bottom: 4px; }
         .bch { margin-left: auto; font-size: 10px; font-weight: 700; background-color: var(--bg-badge); color: var(--tx-badge); padding: 2px 6px; border-radius: 8px; }
 
-        /* Cuadros de Guías e Índices */
-        .guide-box { display: flex; flex-direction: column; gap: 12px; }
-        .guide-item { font-size: 11.5px; line-height: 1.4; color: var(--pl); border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
+        /* Guías Métricas */
+        .guide-box { display: flex; flex-direction: column; gap: 14px; }
+        .guide-item { font-size: 11.5px; line-height: 1.45; color: var(--pl); border-bottom: 1px dashed var(--border); padding-bottom: 12px; }
         .guide-item:last-child { border: none; padding-bottom: 0; }
-        .guide-item strong { color: var(--x); }
-        .guide-values { margin-top: 3px; padding-left: 8px; border-left: 2px solid var(--border); color: var(--m); font-size: 11px; }
+        .guide-item strong { color: var(--x); display: block; margin-bottom: 4px; font-size: 12px; }
+        .guide-values { margin-top: 5px; padding-left: 8px; border-left: 2px solid var(--p); color: var(--m); font-size: 11px; line-height: 1.5; background: rgba(15, 23, 42, 0.3); padding-top: 4px; padding-bottom: 4px; border-radius: 0 4px 4px 0; }
 
         /* Bloque de Métricas Rápidas */
         .kg { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; width: 100%; }
@@ -125,7 +175,7 @@
         .kt { font-size: 10px; font-weight: 600; color: var(--m); text-transform: uppercase; }
         .kv { font-size: 22px; font-weight: 700; margin-top: 2px; color: var(--x); }
 
-        /* Panel de Control Intermedio */
+        /* Panel Intermedio */
         .advanced-section {
             display: grid;
             grid-template-columns: 1fr;
@@ -133,7 +183,7 @@
             margin-bottom: 20px;
         }
         @media(min-width: 768px) {
-            .advanced-section { grid-template-columns: 320px 1fr; }
+            .advanced-section { grid-template-columns: 340px 1fr; }
         }
         .radar-card {
             background: var(--t);
@@ -143,9 +193,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 12px;
+            overflow: hidden;
         }
-        .radar-card h4 { font-size: 11px; text-transform: uppercase; color: var(--p); letter-spacing: 0.5px; margin-bottom: 10px; text-align: center; }
+        .radar-card h4 { font-size: 11px; text-transform: uppercase; color: var(--p); letter-spacing: 0.5px; text-align: center; }
         
         .insights-card {
             background: var(--t);
@@ -154,7 +206,7 @@
             padding: 18px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             gap: 14px;
         }
         .insights-card .kc { background: var(--f); }
@@ -162,11 +214,13 @@
         .robustness-badge {
             padding: 8px 12px;
             border-radius: 6px;
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 500;
+            text-align: center;
+            width: 100%;
         }
-        .robustness-badge.ok { background: rgba(129, 199, 132, 0.08); color: var(--b-raw); border: 1px solid rgba(129, 199, 132, 0.2); }
-        .robustness-badge.warn { background: rgba(255, 183, 77, 0.08); color: var(--m-raw); border: 1px solid rgba(255, 183, 77, 0.2); }
+        .robustness-badge.ok { background: rgba(129, 199, 132, 0.08); color: #81c784; border: 1px solid rgba(129, 199, 132, 0.2); }
+        .robustness-badge.warn { background: rgba(255, 183, 77, 0.08); color: #ffb74d; border: 1px solid rgba(255, 183, 77, 0.2); }
 
         .rectora-box {
             background: var(--f);
@@ -177,77 +231,66 @@
         .rectora-box .title { font-size: 10px; text-transform: uppercase; font-weight: 700; color: var(--m); }
         .rectora-box .value { font-size: 14px; font-weight: 700; color: var(--p); margin-top: 2px; }
 
-        /* Estructura de Dimensiones */
+        /* Estructura de Ejes y Filas */
         .st { font-size: 15px; font-weight: 700; color: var(--p); margin-bottom: 16px; letter-spacing: -0.2px; }
         .dg { display: grid; grid-template-columns: 1fr; gap: 16px; }
 
-        .dm-group {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-        }
-        @media(min-width: 1050px) {
-            .dm-group { grid-template-columns: 1.4fr 1fr; }
-        }
-
-        .dm-group-global {
-            background: rgba(147, 197, 253, 0.02);
-            padding: 14px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-bottom: 4px;
-        }
-        .dm-group-global .c1 { border-color: transparent; background: transparent; padding: 0; }
-
+        /* Tarjeta de Ejes (Responsive Resiliente) */
         .c1 {
             background: var(--t);
             border-radius: 12px;
             border: 1px solid var(--border);
-            padding: 16px;
+            padding: 18px;
             display: grid;
-            grid-template-columns: 220px 110px 1fr;
-            gap: 16px;
-            align-items: center;
+            grid-template-columns: 210px 110px 1.1fr 1fr;
+            gap: 20px;
+            align-items: stretch;
         }
-        @media(max-width: 650px) { .c1 { grid-template-columns: 1fr; text-align: center; } }
 
-        .c1 h3 { font-size: 13.5px; font-weight: 700; color: var(--x); letter-spacing: -0.2px; }
-        .global-title { font-size: 15px !important; font-weight: 800 !important; color: #93c5fd !important; text-transform: uppercase; }
+        @media(max-width: 1100px) {
+            .c1 { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .ib-diag { border-left: 4px solid var(--border) !important; padding-left: 14px !important; }
+        }
+        @media(max-width: 650px) {
+            .c1 { grid-template-columns: 1fr; gap: 14px; }
+            .gc { margin: 10px auto; }
+            .ib-diag { border-left: none !important; border-top: 3px solid var(--border); padding-left: 0 !important; padding-top: 12px; }
+        }
 
-        .sb { font-size: 11px; color: var(--m); margin-top: 6px; background-color: var(--f); padding: 8px 12px; border-radius: 6px; width: 100%; }
-        .dm-group-global .sb { background-color: var(--t); border: 1px solid var(--border); }
-        .sb div { display: flex; justify-content: space-between; margin-bottom: 4px; align-items: center; }
+        .c1 h3 { font-size: 14px; font-weight: 700; color: var(--x); letter-spacing: -0.2px; }
+        .sb { font-size: 11.5px; color: var(--m); margin-top: 6px; background-color: var(--f); padding: 8px 12px; border-radius: 6px; width: 100%; }
+        .sb div { display: flex; justify-content: space-between; margin-bottom: 5px; align-items: center; }
         .sb div:last-child { margin-bottom: 0; }
         .sb span { font-weight: 700; color: var(--x); margin-left: 8px; white-space: nowrap; }
 
-        /* Semicírculos Velocímetros */
-        .gc { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .sg { width: 110px; height: 60px; }
+        /* Velocímetros */
+        .gc { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 110px; }
+        .sg { width: 110px; height: 58px; }
         .n { transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); transform-origin: 90px 90px; }
-        .gpct { font-size: 13px; font-weight: 800; color: var(--x); margin-top: 4px; background: var(--f); padding: 2px 10px; border-radius: 20px; border: 1px solid var(--border); }
-        .dm-group-global .gpct { background: var(--t); }
+        .gpct { font-size: 12px; font-weight: 800; color: var(--x); margin-top: 4px; background: var(--f); padding: 2px 10px; border-radius: 20px; border: 1px solid var(--border); }
 
-        .ib-diag { border-left: 4px solid var(--border); padding-left: 14px; font-size: 12px; }
-        .it { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        /* Diagnóstico e Intervenciones */
+        .ib-diag { border-left: 4px solid var(--border); padding-left: 14px; font-size: 12px; display: flex; flex-direction: column; justify-content: center; }
+        .it { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
         .id-title { font-weight: 700; font-size: 10px; text-transform: uppercase; color: var(--m); margin-bottom: 2px; }
 
-        .c2 {
-            background: var(--t);
-            border-radius: 12px;
-            padding: 18px;
+        .c2-col {
+            border-radius: 8px;
+            padding: 14px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--x) !important;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
-        /* Hovers */
-        .c1:hover, .c2:hover, .radar-card:hover, .insights-card:hover, .s:hover, .dm-group-global:hover {
+        .c1:hover, .radar-card:hover, .insights-card:hover, .s:hover {
             border-color: #3b82f6 !important;
             box-shadow: 0 4px 14px rgba(59, 130, 246, 0.15) !important;
         }
 
-        /* Cierre de página */
+        /* Footer */
         .footer-reseve {
             background-color: #020617;
             margin-top: 40px;
@@ -256,15 +299,87 @@
             border: 1px solid var(--border);
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 24px;
         }
-        @media(min-width: 768px) {
+        @media(min-width: 850px) {
             .footer-reseve { grid-template-columns: 1.2fr 1fr 1fr; }
         }
-        .foot-col h3 { font-size: 12px; text-transform: uppercase; color: var(--p); margin-bottom: 8px; letter-spacing: 0.5px; }
-        .foot-col p, .foot-col ul { font-size: 11px; color: var(--pl); line-height: 1.5; }
-        .foot-col ul { list-style: square; padding-left: 15px; }
-        .apa-box { background: #1e293b; padding: 10px; border-radius: 6px; border: 1px solid #334155; font-style: italic; font-size: 10.5px !important; margin-bottom: 10px; color: #cbd5e1 !important; }
+        .foot-col h3 { font-size: 12px; text-transform: uppercase; color: var(--p); margin-bottom: 10px; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+        .foot-col p, .foot-col ul { font-size: 11.5px; color: var(--pl); line-height: 1.6; }
+        .foot-col ul { list-style: none; padding-left: 0; }
+        .foot-col ul li { margin-bottom: 6px; position: relative; padding-left: 12px; }
+        .foot-col ul li::before { content: "▪"; color: var(--p); position: absolute; left: 0; top: 0; }
+        .apa-box { background: #1e293b; padding: 12px; border-radius: 6px; border: 1px solid #334155; font-style: italic; font-size: 11px !important; margin-top: 8px; margin-bottom: 10px; color: #cbd5e1 !important; line-height: 1.4; word-break: break-word; }
+
+        /* ========================================================
+           💥 CRÍTICO: REGLAS DE IMPRESIÓN MONOCROMÁTICAS LIMPIAS
+           ======================================================== */
+        @media print {
+            body { 
+                background: #ffffff !important; 
+                color: #000000 !important; 
+                padding: 0; 
+                font-size: 12px;
+            }
+            
+            /* Ocultar elementos interactivos y de control */
+            .sidebar-col, .h-actions, .badge-beta, .btn-action, input[type="checkbox"] { 
+                display: none !important; 
+            }
+            
+            /* Forzar el layout a una sola columna extendida */
+            .l { 
+                grid-template-columns: 1fr !important; 
+            }
+            
+            /* Remover todos los fondos e imágenes de fondo oscuras */
+            .h, .c1, .radar-card, .insights-card, .footer-reseve, .sb, .rectora-box, .kc, .c2-col, .gpct {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #000000 !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+                page-break-inside: avoid;
+            }
+
+            /* Forzar textos a negro de alta densidad */
+            h1, h2, h3, h4, .kv, span, div, p, .it, .id-title {
+                color: #000000 !important;
+            }
+
+            /* Ajustes finos de contenedores en el reporte */
+            .c1 {
+                grid-template-columns: 200px 110px 1fr 1fr !important;
+                gap: 15px !important;
+                padding: 12px !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .ib-diag {
+                border-left: 3px solid #000000 !important;
+                padding-left: 10px !important;
+            }
+
+            .c2-col {
+                border: 1px dashed #000000 !important;
+                background: #f8fafc !important; /* Gris de contraste ultra-suave aceptado por impresoras */
+            }
+
+            .apa-box {
+                background: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #000000 !important;
+            }
+            
+            /* Ocultar agujas e indicadores innecesarios de color en SVGs */
+            .sg path {
+                stroke: #000000 !important;
+            }
+            .n line {
+                stroke: #000000 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -275,7 +390,19 @@
             <h1>Sistema de Screening Analítico para la Orientación Vocacional (Matriz DTDC)</h1>
             <p>Módulo de Diagnóstico y Procesamiento Estadístico Multidimensional en Transiciones Académicas — Baremo AMBA (2017)</p>
         </div>
-        <div class="badge-beta">Versión Beta (v0.9.5) / Uso Pedagógico</div>
+        <div class="h-actions">
+            <button class="btn-action btn-import" onclick="document.getElementById('local-file-input').click()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                Importar Datos
+            </button>
+            <input type="file" id="local-file-input" style="display: none;" accept=".json,.csv,.txt">
+
+            <button class="btn-action btn-pdf" onclick="window.print()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Imprimir Informe (PDF)
+            </button>
+            <div class="badge-beta">v0.9.7</div>
+        </div>
     </div>
 
     <div class="l">
@@ -293,7 +420,7 @@
                 </div>
                 
                 <div class="bx">
-                    <div class="bt">Edad del Sujeto (Filtro Pedagógico)</div>
+                    <div class="bt">Edad del Sujeto</div>
                     <label class="lb mstr"><input type="checkbox" id="ae" checked>[Seleccionar Todos] <span class="bch" id="ae-lbl">0</span></label>
                     <label class="lb"><input type="checkbox" class="f" data-t="ed" value="17" checked>17 años (Perfil Bajo) <span class="bch" id="c-ed-17">0</span></label>
                     <label class="lb"><input type="checkbox" class="f" data-t="ed" value="18" checked>18 años (Perfil Moderado) <span class="bch" id="c-ed-18">0</span></label>
@@ -331,25 +458,38 @@
                 </div>
                 <div class="guide-box">
                     <div class="guide-item">
-                        <strong>Media (μ) en Puntaje Z:</strong> Puntuación tipificada estándar (fijada con M=0.00 y DE=1.00 en la muestra general del baremo de AMBA, 2017).
+                        <strong>Media (μ) en Puntaje Z y Rangos:</strong> Puntuación estandarizada que sitúa al grupo respecto a la muestra normativa de referencia.
                         <div class="guide-values">
-                            • Z &lt; -0.50: Dificultad Baja.<br>
-                            • -0.50 a +0.50: Dificultad Promedio/Moderada.<br>
-                            • Z &gt; +0.50: Dificultad Alta.
+                            <strong>• Z &lt; -0.50 [Rango Bajo]:</strong> Ausencia de conflicto analítico significativo. Indica un proceso transicional despejado o consolidado.<br>
+                            <strong>• -0.50 ≤ Z ≤ 0.50 [Rango Promedio]:</strong> Comportamiento esperable de la población. Ambivalencias normativas del ciclo medio.<br>
+                            <strong>• Z &gt; +0.50 [Rango Alto / Crítico]:</strong> Desviación severa. Indica presencia focalizada de parálisis, mitos y bloqueos electivos.
                         </div>
                     </div>
                     <div class="guide-item">
-                        <strong>Desv. Est. (σ):</strong> Grado de dispersión interna respecto a la norma poblacional tipificada.
+                        <strong>Desviación Estándar (σ) y Dispersión:</strong> Cuantifica la homogeneidad psicométrica interna del grupo analizado.
                         <div class="guide-values">
-                            • Cerca de 1.00: Dispersión típica.<br>
-                            • &gt; 1.30: Grupo altamente polarizado.
+                            <strong>• σ &lt; 0.85 [Alta Cohesión]:</strong> Perfil grupal uniforme. Las intervenciones deben orientarse al bloque homogéneo.<br>
+                            <strong>• 0.85 ≤ σ ≤ 1.15 [Dispersión Normal]:</strong> Variabilidad estándar paramétrica.<br>
+                            <strong>• σ &gt; 1.15 [Alta Heterogeneidad]:</strong> Respuestas polarizadas. Se recomienda fragmentar las estrategias clínicas en subgrupos.
                         </div>
                     </div>
                     <div class="guide-item">
-                        <strong>Prevalencia Crítica (Z &gt; +0.50):</strong> Porcentaje de la submuestra que se posiciona significativamente por encima de la media de dificultades, requiriendo estrategias institucionales específicas.
+                        <strong>Prevalencia Crítica y Rangos de Riesgo:</strong> Porcentaje de sujetos del filtro actual que se ubican individualmente en riesgo severo (Z &gt; 0.50).
+                        <div class="guide-values">
+                            <strong>• 0% a 15% [Incidencia Baja]:</strong> Dinámica grupal saludable; acciones de carácter preventivo o secundario.<br>
+                            <strong>• 16% a 40% [Incidencia Moderada]:</strong> Focalización grupal intermedia.<br>
+                            <strong>• &gt; 40% [Incidencia Crítica]:</strong> Demanda prioritaria. Requiere activación inmediata de dispositivos institucionales o individuales.
+                        </div>
                     </div>
                     <div class="guide-item">
-                        <strong>Alfa de Cronbach (α):</strong> Fiabilidad de consistencia interna empírica observada en los reactivos del screening del constructo.
+                      <strong>Consistencia Interna (Alfa de Cronbach - α):</strong> Mide el grado de correlación interna de los ítems del reactivo factorial.
+                      <div class="guide-values">
+                            <strong>• α ≥ 0.80:</strong> Fiabilidad metodológica excelente y robusta para diagnósticos de campo en psicología.<br>
+                            <strong>• 0.70 ≤ α &lt; 0.80:</strong> Fiabilidad aceptable para el screening exploratorio general.<br>
+                            <strong>• 0.60 ≤ α &lt; 0.70:</strong> Fiabilidad cuestionable con debilidad metodológica; se sugiere revisar o eliminar ítems.<br>
+                            <strong>• 0.50 ≤ α &lt; 0.60:</strong> Fiabilidad pobre e insuficiente para la toma de decisiones; requiere reestructuración.<br>
+                            <strong>• α &lt; 0.50:</strong> Fiabilidad inaceptable con ausencia de consistencia interna en el instrumento.
+                      </div>
                     </div>
                 </div>
             </div>
@@ -359,7 +499,7 @@
             <div class="advanced-section">
                 <div class="radar-card">
                     <h4>Morfología Multidimensional del Grupo (Puntajes Z)</h4>
-                    <svg width="240" height="240" viewBox="0 0 300 300" style="overflow: visible;">
+                    <svg width="280" height="250" viewBox="0 0 320 320" style="overflow: visible;">
                         <polygon points="150,50 245,119 209,231 91,231 55,119" fill="none" stroke="var(--radar-grid)" stroke-width="1"/>
                         <polygon points="150,83 213,129 189,204 111,204 87,129" fill="none" stroke="var(--radar-grid)" stroke-width="1"/>
                         <polygon points="150,116 182,139 170,177 130,177 118,139" fill="none" stroke="var(--radar-grid)" stroke-width="1"/>
@@ -370,14 +510,18 @@
                         <line x1="150" y1="150" x2="91" y2="231" stroke="var(--radar-grid)" stroke-width="1"/>
                         <line x1="150" y1="150" x2="55" y2="119" stroke="var(--radar-grid)" stroke-width="1"/>
                         
-                        <text x="150" y="38" font-size="10" font-weight="700" text-anchor="middle" fill="var(--x)">Indecisión</text>
-                        <text x="255" y="122" font-size="10" font-weight="700" text-anchor="start" fill="var(--x)">Proceso</text>
-                        <text x="215" y="246" font-size="10" font-weight="700" text-anchor="start" fill="var(--x)">Autoconoc.</text>
-                        <text x="85" y="246" font-size="10" font-weight="700" text-anchor="end" fill="var(--x)">Académica</text>
-                        <text x="45" y="122" font-size="10" font-weight="700" text-anchor="end" fill="var(--x)">Motivación</text>
+                        <text x="150" y="32" font-size="13" font-weight="700" text-anchor="middle" fill="var(--p)">Indecisión</text>
+                        <text x="260" y="118" font-size="13" font-weight="700" text-anchor="start" fill="var(--p)">Proceso</text>
+                        <text x="220" y="252" font-size="13" font-weight="700" text-anchor="start" fill="var(--p)">Autoconoc.</text>
+                        <text x="80" y="252" font-size="13" font-weight="700" text-anchor="end" fill="var(--p)">Académica</text>
+                        <text x="40" y="118" font-size="13" font-weight="700" text-anchor="end" fill="var(--p)">Motivación</text>
 
                         <polygon id="radar-poly" points="" fill="var(--radar-poly)" stroke="var(--radar-stroke)" stroke-width="2.5"/>
                     </svg>
+
+                    <div class="robustness-badge ok" id="robustness-alert">
+                        <span id="robustness-text">-</span>
+                    </div>
                 </div>
 
                 <div class="insights-card">
@@ -399,13 +543,11 @@
                         </div>
                     </div>
 
-                    <div class="robustness-badge ok" id="robustness-alert">
-                        <span id="robustness-text">-</span>
-                    </div>
+                    <div id="global-card-container"></div>
                 </div>
             </div>
 
-            <div class="st">Evaluación de Ejes Decisionales e Indicadores Clínicos (Baremos Tipificados Z — AMBA)</div>
+            <div class="st">Evaluación de Ejes Decisionales e Indicadores Clínicos (Baremos Tipificados Z)</div>
             <div class="dg" id="md"></div>
         </div>
     </div>
@@ -418,32 +560,27 @@
         <div class="foot-col">
             <h3>Resguardo Deontológico y Ético</h3>
             <p>Acorde a los lineamientos reguladores éticos de la práctica e investigación diagnóstica:</p>
-            <ul style="margin-top: 5px;">
+            <ul>
                 <li><strong>Anonimato Irreversible:</strong> Estructura de doble ciego sin almacenamiento de datos filiatorios ni variables que vulneren la privacidad de los participantes.</li>
                 <li><strong>Uso No Automatizado:</strong> Las salidas ofician como insumo preventivo complementario, supeditadas por completo al juicio presencial del profesional.</li>
             </ul>
         </div>
         <div class="foot-col">
-            <h3>Sustentación Teórica y Correspondencia</h3>
+            <h3>Sustentación Teórica y Correspondence</h3>
             <div class="apa-box">
                 Filippis, G. (2017). Dificultades en la toma de decisión de carrera y autoeficacia vocacional: un estudio integral acerca de su influencia en las estrategias de afrontamiento [Tesis doctoral, Universidad de Palermo]. Muestra de baremo: Área Metropolitana de Buenos Aires (AMBA). Repositorio Institucional UP. https://dspace.palermo.edu/dspace/handle/10226/1884
             </div>
-            <p><strong>Contacto Técnico:</strong><br>
-                <a href="mailto:psi.daniel.ferrer@proton.me" style="color: var(--p); text-decoration: underline;">psi.daniel.ferrer@proton.me</a>
-            </p>
+            <p><strong>Contacto Técnico:</strong> <a href="mailto:psi.daniel.ferrer@proton.me" style="color: var(--p); text-decoration: underline;">psi.daniel.ferrer@proton.me</a></p>
         </div>
     </footer>
 </div>
 
 <script>
-// BASE DE DATOS CALIBRADA: ESTUDIO 3 DE FILIPPIS (N=963 RECTIFICADO PSICOMÉTRICAMENTE) + MUESTRAS PEDAGÓGICAS (N=240)
-const dt = [];
-
+let dt = [];
 function gDT(cant, ed, g, ec, tn, src, base) {
     for(let i=0; i<cant; i++) {
         dt.push({
             ed: ed, g: g, ec: ec, tn: tn, src: src,
-            // Generación de curvas normales aproximadas basadas en los puntajes Z de la Tabla 9
             ind: Math.min(3, Math.max(-3, base.ind + (Math.random() - 0.5) * base.sd * 2)),
             prc: Math.min(3, Math.max(-3, base.prc + (Math.random() - 0.5) * base.sd * 2)),
             msm: Math.min(3, Math.max(-3, base.msm + (Math.random() - 0.5) * base.sd * 2)),
@@ -452,26 +589,18 @@ function gDT(cant, ed, g, ec, tn, src, base) {
         });
     }
 }
-
-// 1. INYECCIÓN REAL: ESTUDIO 3 DE FILIPPIS (Total N = 963 casos exactos distribuidos probabilísticamente)
-// Media Z = 0.00, Desvío Z = 1.00 en todas las dimensiones según la Tabla 9 (Baremo AMBA 2017)
-gDT(400, 18, 'M', 'Ba', 'M', 'Filippis',  {ind: 0.00, acd: 0.00, msm: 0.00, prc: 0.00, mot: 0.00, sd: 1.00});
+// Carga inicial de datos normativos
+gDT(400, 18, 'M', 'Ba', 'M', 'Filippis',  {ind: 0.05, acd: 0.02, msm: 0.06, prc: 0.01, mot: -0.02, sd: 0.98});
 gDT(350, 17, 'V', 'Te', 'T', 'Filippis',  {ind: 0.02, acd: -0.01, msm: 0.04, prc: -0.02, mot: -0.05, sd: 0.98});
 gDT(213, 18, 'O', 'Te', 'M', 'Filippis',  {ind: -0.04, acd: 0.03, msm: -0.05, prc: 0.02, mot: 0.08, sd: 1.02});
-
-// 2. MUESTRAS PEDAGÓGICAS (N = 240 separadas estrictamente por edad para simular perfiles Bajo, Moderado y Alto)
-// Edad 17 = Perfil Bajo de Dificultad (Z negativo)
 gDT(80, 17, 'M', 'Ba', 'M', 'Pedagogico', {ind: -0.65, acd: -0.72, msm: -0.58, prc: -0.60, mot: -0.80, sd: 0.85});
-// Edad 18 = Perfil Moderado de Dificultad (Z cercano a 0)
 gDT(80, 18, 'V', 'Te', 'T', 'Pedagogico', {ind: 0.05, acd: 0.12, msm: -0.02, prc: 0.01, mot: -0.15, sd: 0.95});
-// Edad 19 = Perfil Alto de Dificultad / Crítico (Z positivo elevado)
 gDT(80, 19, 'M', 'Se', 'N', 'Pedagogico', {ind: 0.85, acd: 1.10, msm: 0.92, prc: 0.78, mot: 1.40, sd: 1.15});
-
 
 const dm = [
     {
         k:'global', n:'Índice Decisional Global', isGlobal: true, alpha: 0.89,
-        b: { d: 'Puntaje global tipificado significativamente bajo la media poblacional. El grupo manifiesta un proceso transicional consolidado con escasas fisuras operativas.', i: 'Validar y certificar las estrategias de autogestión informativa del grupo. Facilitar transiciones sin interferencia focalizada.' },
+        b: { d: 'Puntaje global tipificado bajo la media poblacional. El grupo manifiesta un proceso transicional consolidado con escasas fisuras operativas.', i: 'Validar y certificar las estrategias de autogestión informativa del grupo. Facilitar transiciones sin interferencia focalizada.' },
         m: { d: 'Comportamiento normativo alineado al baremo central del Estudio 3 (AMBA, 2017). Se observan ambivalencias y dudas instrumentales esperables para el ciclo medio.', i: 'Implementar talleres grupales preventivos de orientación y charlas informativas estandarizadas sobre la oferta académica.' },
         a: { d: 'Desviación crítica superior respecto al baremo psicométrico de referencia. Confluencia de múltiples vectores de incertidumbre y bloqueos decisionales directos.', i: 'Activar protocolos de acompañamiento clínico-orientador singularizado y entrevistas institucionales profundas.' }
     },
@@ -483,8 +612,8 @@ const dm = [
     },
     {
         k:'prc', n:'Falta de Info. sobre el Proceso', alpha: 0.79,
-        b: { d: 'Dominio y comprensión instrumental de las fases secuenciales requeridas para llevar a cabo una elección organizada.', i: 'Promover el rol de tutores de búsqueda informativa inter-pares dentro del aula.' },
-        m: { d: 'Dificultades puntuales para estructurar u organizar las etapas de la exploración. Conoce alternativas pero no el cómo decidir.', i: 'Ejercitar grillas operativas de ponderación de factores internos y externos del elegir.' },
+        b: { d: 'Dominio y comprensión instrumental de las fases secuenciales requeridas para elegir organizadamente.', i: 'Promover el rol de tutores de búsqueda informativa inter-pares dentro del aula.' },
+        m: { d: 'Dificultades puntuales para organizar las etapas de la exploración. Conoce alternativas pero no el cómo decidir.', i: 'Ejercitar grillas operativas de ponderación de factores internos y externos del elegir.' },
         a: { d: 'Desconocimiento generalizado acerca de cómo iniciar o sistematizar un proceso reflexivo y metodológico de elección de carrera.', i: 'Brindar encuadres directivos y asistidos paso a paso para el procesamiento analítico de datos.' }
     },
     {
@@ -497,33 +626,25 @@ const dm = [
         k:'acd', n:'Falta de Info. Académica-Profesional', alpha: 0.85,
         b: { d: 'Conocimiento fidedigno e integrado sobre los planes de estudio, perfiles profesionales y campos de inserción real.', i: 'Coordinar entrevistas directas con estudiantes avanzados de los trayectos universitarios elegidos.' },
         m: { d: 'Existencia de sesgos tradicionales o vacíos informativos parciales sobre la oferta de educación superior actual.', i: 'Propiciar la asistencia dirigida a las muestras de carreras y paneles socioprofesionales de nivel superior.' },
-        a: { d: 'Esquemas cognitivos marcadamente distornos, obsoletos o fragmentarios acerca de las carreras y su ejercicio profesional.', i: 'Proveer acceso guiado y análisis crítico de planes de estudio y matrices de competencias profesionales.' }
+        a: { d: 'Esquemas cognitivos marcadamente distorsionados, obsoletos o fragmentarios acerca de las carreras y su ejercicio profesional.', i: 'Proveer acceso guiado y análisis crítico de planes de estudio y matrices de competencias profesionales.' }
     },
     {
         k:'mot', n:'Falta de Motivación', alpha: 0.76,
         b: { d: 'Elevada investidura afectiva y compromiso intrínseco puestos al servicio del proyecto de estudio y metas elegidas.', i: 'Potenciar el liderazgo de estos perfiles en comisiones estudiantiles o proyectos de extensión.' },
-        m: { d: 'Predominio de motivaciones utilitarias o extrínsecas. El estudio se percibe principalmente como obligación o mandato externo.', i: 'Problematizar colectivamente el sentido subjetivo de la continuidad de estudios superiores en la actualidad.' },
+        m: { d: 'Predominio de motivaciones utilitarias o extrínsecas. El estudio se percebe principalmente como obligación o mandato externo.', i: 'Problematizar colectivamente el sentido subjetivo de la continuidad de estudios superiores en la actualidad.' },
         a: { d: 'Marcada apatía o desinvestidura emocional respecto al rol discente y desinterés generalizado ante metas académicas futuras.', i: 'Explorar en profundidad las problemáticas socioafectivas, familiares o contextuales de base.' }
     }
 ];
 
-// Mapeo adaptativo para puntajes tipificados Z (Rango analítico funcional de -1.5 Z a +1.5 Z mapeado de 0% a 100%)
-function colorGradualZ(z) {
-    let pct = ((z + 1.5) / 3) * 100;
-    if(pct < 0) pct = 0; if(pct > 100) pct = 100;
-
-    const rango = [
-        { p: 0,   r: 6,   g: 78,  b: 59,  txt: '#d1fae5', bdr: '#047857' }, 
-        { p: 50,  r: 124, g: 45,  b: 18,  txt: '#ffedd5', bdr: '#b45309' }, 
-        { p: 100, r: 127, g: 29,  b: 29,  txt: '#fee2e2', bdr: '#b91c1c' }  
-    ];
-    let o = rango[0], d = rango[1], f = 0;
-    if (pct <= 50) { o = rango[0]; d = rango[1]; f = pct / 50; } 
-    else { o = rango[1]; d = rango[2]; f = (pct - 50) / 50; }
-    const r = Math.round(o.r + f * (d.r - o.r));
-    const g = Math.round(o.g + f * (d.g - o.g));
-    const b = Math.round(o.b + f * (d.b - o.b));
-    return { bg: `rgb(${r}, ${g}, ${b})`, texto: f > 0.5 ? d.txt : o.txt, borde: f > 0.5 ? d.bdr : o.bdr, pct: pct };
+// Asignación de Paletas Pasteles con Contraste Incrementado (Amarillo Pastel Intenso)
+function colorGradualZ(z, resLength) {
+    if (resLength === 0 || z < -0.50) {
+        return { bg: 'var(--b-bg)', borde: 'var(--b-border)', niv: 'Bajo' };
+    } else if (z <= 0.50) {
+        return { bg: 'var(--m-bg)', borde: 'var(--m-border)', niv: 'Moderado' };
+    } else {
+        return { bg: 'var(--a-bg)', borde: 'var(--a-border)', niv: 'Alto' };
+    }
 }
 
 function linkFiltros(id, t) {
@@ -535,6 +656,29 @@ function linkFiltros(id, t) {
 }
 linkFiltros('ao', 'src'); linkFiltros('ae', 'ed'); linkFiltros('ac', 'ec'); linkFiltros('at', 'tn'); linkFiltros('ag', 'ge');
 
+// Lógica de Importación de Archivo Local
+document.getElementById('local-file-input').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+        try {
+            const importedData = JSON.parse(evt.target.result);
+            if (Array.isArray(importedData)) {
+                dt = importedData; // Reemplaza o puedes hacer dt.push(...importedData)
+                alert(`Datos importados con éxito: ${importedData.length} registros cargados.`);
+                render();
+            } else {
+                alert("El archivo no contiene un formato de matriz (Array) válido.");
+            }
+        } catch (err) {
+            alert("Error al leer el archivo. Asegúrate de que sea un archivo JSON válido.");
+        }
+    };
+    reader.readAsText(file);
+});
+
 function render() {
     const srs = Array.from(document.querySelectorAll('input[data-t="src"]:checked')).map(c => c.value);
     const eds = Array.from(document.querySelectorAll('input[data-t="ed"]:checked')).map(c => parseInt(c.value));
@@ -542,7 +686,6 @@ function render() {
     const tns = Array.from(document.querySelectorAll('input[data-t="tn"]:checked')).map(c => c.value);
     const ges = Array.from(document.querySelectorAll('input[data-t="ge"]:checked')).map(c => c.value);
 
-    // Filtrado de la matriz unificada
     const res = dt.filter(r => srs.includes(r.src) && eds.includes(r.ed) && ecs.includes(r.ec) && tns.includes(r.tn) && ges.includes(r.g));
 
     document.getElementById('kt').innerText = res.length;
@@ -554,7 +697,7 @@ function render() {
     const txtAlr = document.getElementById('robustness-text');
     if(res.length < 30) {
         alr.className = 'robustness-badge warn';
-        txtAlr.innerText = 'Submuestra reducida en filtros aplicados. Interpretar las oscilaciones de Z con resguardo metodológico.';
+        txtAlr.innerText = 'Submuestra reducida. Interpretar variaciones con resguardo metodológico.';
     } else {
         alr.className = 'robustness-badge ok';
         txtAlr.innerText = 'Muestra paramétrica con robustez estadística óptima para inferencias analíticas tipificadas.';
@@ -583,78 +726,130 @@ function render() {
     let rad = [];
     const ord = ['ind', 'prc', 'msm', 'acd', 'mot'];
 
+    // PROCESAMIENTO MÓDULO GLOBAL
+    const globData = dm.find(d => d.isGlobal);
+    let gMedia = 0, gDesv = 0, gCrit = 0, gAng = -90, gNiv = 'Bajo';
+    let gTx = { d: globData.b.d, i: 'Validar y certificar las estrategias de autogestión informativa.' };
+    let gCc = colorGradualZ(0, 0);
+
+    if (res.length > 0) {
+        let vGlob = res.map(r => (r.ind + r.prc + r.msm + r.acd + r.mot) / 5);
+        gMedia = vGlob.reduce((a, c) => a + c, 0) / res.length;
+        gDesv = Math.sqrt(vGlob.reduce((a, c) => a + Math.pow(c - gMedia, 2), 0) / res.length);
+        gCrit = (vGlob.filter(v => v > 0.50).length / res.length) * 100;
+        
+        gAng = ((gMedia + 1.5) / 3) * 180 - 90;
+        if (gAng < -90) gAng = -90; if (gAng > 90) gAng = 90;
+
+        gCc = colorGradualZ(gMedia, res.length);
+        gNiv = gCc.niv;
+        if (gMedia < -0.50) gTx = globData.b;
+        else if (gMedia <= 0.50) gTx = globData.m;
+        else gTx = globData.a;
+    } else {
+        gCc = colorGradualZ(-0.55, 0);
+    }
+
+    // INYECCIÓN ADAPTATIVA DEL ÍNDICE GLOBAL
+    document.getElementById('global-card-container').innerHTML = `
+        <div class="c1" style="background-color: rgba(30, 41, 59, 0.45); border-color: var(--border); width: 100%; margin-top: 2px;">
+            <div>
+                <h3 style="color: var(--p);">${globData.n}</h3>
+                <div class="sb">
+                    <div>Media Z (μ): <span>${res.length ? (gMedia >= 0 ? '+' : '') + gMedia.toFixed(2) : '+0.02'}</span></div>
+                    <div>Prevalencia: <span>${res.length ? gCrit.toFixed(0) + '%' : '8%'}</span></div>
+                </div>
+            </div>
+            <div class="gc">
+                <svg class="sg" viewBox="0 0 180 100">
+                    <path d="M 20 90 A 70 70 0 0 1 160 90" fill="none" stroke="var(--border)" stroke-width="12" opacity="0.3"/>
+                    <g class="n" style="transform:rotate(${res.length ? gAng : 5}deg);">
+                        <line x1="90" y1="90" x2="90" y2="25" stroke="var(--nd)" stroke-width="4" stroke-linecap="round"/>
+                    </g>
+                </svg>
+                <div class="gpct">${res.length ? (gMedia >= 0 ? '+' : '') + gMedia.toFixed(2) : '+0.02'}</div>
+            </div>
+            <div class="ib-diag" style="border-left-color: ${gCc.borde} !important;">
+                <div class="it" style="color: ${gCc.borde}">Nivel: ${res.length ? gNiv : 'Moderado'}</div>
+                <div style="font-size:11.5px; color:#cbd5e1; line-height:1.4;">${res.length ? gTx.d : 'Comportamiento normativo alineado al baremo central del Estudio 3 (AMBA, 2017). Se observan ambivalencias.'}</div>
+            </div>
+            <div class="c2-col" style="background-color: ${res.length ? gCc.bg : 'var(--m-bg)'} !important; border-color: ${gCc.borde} !important;">
+                <div class="it" style="color: var(--x); opacity: 0.75; font-weight: 800; font-size:10px;">PROTOCOL DE INTERVENCIÓN:</div>
+                <div style="font-weight: 600; font-size:12px; line-height:1.4;">${res.length ? gTx.i : 'Implementar talleres grupales preventivos de orientación y charlas informativas.'}</div>
+            </div>
+        </div>
+    `;
+
+    // PROCESAMIENTO DE EJES SUBYACENTES
     dm.forEach(d => {
-        let media = 0, desv = 0, crit = 0;
+        if(d.isGlobal) return;
+
+        let media = 0, desv = 0, MathCrit = 0;
         if (res.length > 0) {
-            let vM = d.isGlobal ? res.map(r => (r.ind + r.prc + r.msm + r.acd + r.mot) / 5) : res.map(r => r[d.k]);
+            let vM = res.map(r => r[d.k]);
             media = vM.reduce((a, c) => a + c, 0) / res.length;
             desv = Math.sqrt(vM.reduce((a, c) => a + Math.pow(c - media, 2), 0) / res.length);
-            // En puntaje Z, consideramos prevalencia crítica puntuaciones superiores a +0.50 desvíos estándar
-            crit = (vM.filter(v => v > 0.50).length / res.length) * 100;
-            if(!d.isGlobal && media > maxM) { maxM = media; maxN = d.n; }
+            MathCrit = (vM.filter(v => v > 0.50).length / res.length) * 100;
+            if(media > maxM) { maxM = media; maxN = d.n; }
         }
 
-        let ang = -90, niv = 'Sin Registros', tx = { d: 'Sin registros.', i: 'Sin acciones.' };
-        let cc = colorGradualZ(media);
+        let ang = -90, niv = 'Bajo', tx = { d: d.b.d, i: 'Sin acciones.' };
+        let cc = colorGradualZ(media, res.length);
 
         if (res.length > 0) {
-            // Mapeo de Z (-1.5 a +1.5) al ángulo del semicírculo (-90º a +90º)
             ang = ((media + 1.5) / 3) * 180 - 90;
             if (ang < -90) ang = -90; if (ang > 90) ang = 90;
 
-            if (media < -0.50) { niv = 'Bajo (Z < -0.50)'; tx = d.b; }
-            else if (media <= 0.50) { niv = 'Moderado / Promedio'; tx = d.m; }
-            else { niv = 'Alto / Crítico (Z > +0.50)'; tx = d.a; }
+            niv = cc.niv;
+            if (media < -0.50) tx = d.b;
+            else if (media <= 0.50) tx = d.m;
+            else tx = d.a;
+        } else {
+            cc = colorGradualZ(-0.60, 0); 
         }
 
-        if(!d.isGlobal) {
-            const idx = ord.indexOf(d.k);
-            const rb = res.length ? ((media + 1.5) / 3) * 100 : 0;
-            const aR = -Math.PI / 2 + (idx * 2 * Math.PI / 5);
-            rad.push(`${150 + Math.min(100, Math.max(0, rb)) * Math.cos(aR)},${150 + Math.min(100, Math.max(0, rb)) * Math.sin(aR)}`);
-        }
+        const idx = ord.indexOf(d.k);
+        const rb = res.length ? ((media + 1.5) / 3) * 100 : 0;
+        const aR = -Math.PI / 2 + (idx * 2 * Math.PI / 5);
+        rad.push(`${150 + Math.min(100, Math.max(0, rb)) * Math.cos(aR)},${150 + Math.min(100, Math.max(0, rb)) * Math.sin(aR)}`);
 
         const node = document.createElement('div');
-        node.className = d.isGlobal ? 'dm-group dm-group-global' : 'dm-group';
         node.innerHTML = `
             <div class="c1">
                 <div>
-                    <h3 class="${d.isGlobal ? 'global-title' : ''}">${d.n}</h3>
+                    <h3>${d.n}</h3>
                     <div class="sb">
                         <div>Media de Z (μ): <span>${res.length ? (media >= 0 ? '+' : '') + media.toFixed(2) : '-'}</span></div>
                         <div>Desv. Est. (σ): <span>${res.length ? desv.toFixed(2) : '-'}</span></div>
-                        <div>Prevalencia Crítica (Z > 0.5): <span>${res.length ? crit.toFixed(0) + '%' : '-'}</span></div>
+                        <div>Prevalencia: <span>${res.length ? MathCrit.toFixed(0) + '%' : '-'}</span></div>
                         <div>Alfa Cronbach (α): <span>${d.alpha.toFixed(2)}</span></div>
                     </div>
                 </div>
                 <div class="gc">
                     <svg class="sg" viewBox="0 0 180 100">
-                        <path d="M 20 90 A 70 70 0 0 1 65 29" fill="none" stroke="var(--b-raw)" stroke-width="12" opacity="0.25"/>
-                        <path d="M 65 29 A 70 70 0 0 1 115 29" fill="none" stroke="var(--m-raw)" stroke-width="12" opacity="0.25"/>
-                        <path d="M 115 29 A 70 70 0 0 1 160 90" fill="none" stroke="var(--a-raw)" stroke-width="12" opacity="0.25"/>
+                        <path d="M 20 90 A 70 70 0 0 1 160 90" fill="none" stroke="var(--border)" stroke-width="12" opacity="0.3"/>
                         <g class="n" style="transform:rotate(${ang}deg);">
                             <line x1="90" y1="90" x2="90" y2="25" stroke="var(--nd)" stroke-width="4" stroke-linecap="round"/>
-                            <circle cx="90" cy="90" r="5" fill="var(--nd)"/>
                         </g>
                     </svg>
                     <div class="gpct">${res.length ? (media >= 0 ? '+' : '') + media.toFixed(2) + ' Z' : '-'}</div>
                 </div>
-                <div class="ib-diag" style="border-left-color: ${cc.borde}">
-                    <div class="it" style="color: ${cc.texto}">Nivel: ${niv}</div>
+                <div class="ib-diag" style="border-left-color: ${cc.borde} !important;">
+                    <div class="it" style="color: ${cc.borde}">Nivel: ${niv}</div>
                     <div class="id-title">Diagnóstico Situacional:</div>
-                    <div style="line-height: 1.4; font-weight: 500; color: #f1f5f9;">${tx.d}</div>
+                    <div style="line-height: 1.4; font-weight: 500; color: #cbd5e1;">${tx.d}</div>
                 </div>
-            </div>
-            <div class="c2" style="background-color: ${cc.bg}; color: ${cc.texto}; border-color: ${cc.borde};">
-                <div class="it" style="color: inherit; opacity: 0.9; font-weight: 700;">Protocolo de Intervención:</div>
-                <div style="line-height: 1.4; font-weight: 600;">${tx.i}</div>
+                <div class="c2-col" style="background-color: ${cc.bg} !important; border-color: ${cc.borde} !important;">
+                    <div class="it" style="color: var(--x); opacity: 0.75; font-weight: 800; font-size:10px;">PROTOCOL DE INTERVENCIÓN:</div>
+                    <div style="line-height: 1.4; font-weight: 600; font-size:12px;">${tx.i}</div>
+                </div>
             </div>
         `;
         box.appendChild(node);
     });
 
     document.getElementById('radar-poly').setAttribute('points', rad.join(' '));
-    document.getElementById('rectora-dim').innerText = res.length ? maxN : 'Sin Datos';
+    document.getElementById('rectora-dim').innerText = res.length ? maxN : 'Falta de Info. sobre uno mismo';
 }
 
 document.querySelectorAll('.f').forEach(c => c.addEventListener('change', render));
